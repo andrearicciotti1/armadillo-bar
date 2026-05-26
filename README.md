@@ -20,6 +20,8 @@ Ultra-leggera (~4 MB RAM idle), zero dipendenze, Swift nativo + Cocoa + AVFounda
 - 🎧 9 clip audio con shortcut globali `⌥⌘1` … `⌥⌘9`
 - ➕ Carica i tuoi suoni personalizzati via file picker
 - ⏱ Durata max 30s per clip, toggle start/stop premendo di nuovo lo shortcut
+- 🦔 **Armadillo Clippy** — compare automaticamente ogni ~10-12 minuti con una frase iconica in un balloon fumetto disegnato a mano; si può evocare/nascondere manualmente con `⌥⌘0`
+- 💬 **Dialog "Chiedi all'Armadillo"** — clicca sull'armadillo, fai una domanda; risponde con un clip audio o un balloon
 - 🚀 Avvia al login (opzionale, togglable dal menu)
 - 🪶 Binario universal arm64+x86_64, ~100 KB, nessun Electron, nessun Python
 
@@ -48,7 +50,8 @@ cd armadillo-bar
 open ArmadilloBar.app
 ```
 
-Richiede macOS 13+ e Command Line Tools (`xcode-select --install`).
+Richiede macOS 13 (Ventura) o superiore e Command Line Tools (`xcode-select --install`).  
+Compatibile con Ventura, Sonoma, Sequoia e Tahoe. Universal binary (Apple Silicon + Intel).
 
 ---
 
@@ -67,17 +70,17 @@ Nome file = label nel menu.
 
 ## ⌨️ Shortcut globali predefiniti
 
-| Shortcut | Frase |
-|----------|-------|
-| `⌥⌘1`    | Sangue mio |
-| `⌥⌘2`    | Embé? |
-| `⌥⌘3`    | Aripijate |
-| `⌥⌘4`    | Sti cazzi |
-| `⌥⌘5`    | Stamo a posto |
-| `⌥⌘6`    | Anvedi |
+| Shortcut | Clip |
+|----------|------|
+| `⌥⌘1`    | Cintura nera |
+| `⌥⌘2`    | Dietro le quinte |
+| `⌥⌘3`    | Il silenzio prima… |
+| `⌥⌘4`    | Le cose succedono |
+| `⌥⌘5`    | Soggetto consapevole |
+| `⌥⌘6`    | Vola basso |
 | `⌥⌘7`    | Ti raggiungo col coso |
 | `⌥⌘8`    | N'damose a pija 'n gelato |
-| `⌥⌘9`    | La domanda mi devasta |
+| `⌥⌘9`    | Zona d'ombra |
 
 Funzionano ovunque, anche senza aprire il menu. Ripremere lo stesso shortcut ferma la riproduzione.
 
@@ -85,7 +88,7 @@ Funzionano ovunque, anche senza aprire il menu. Ripremere lo stesso shortcut fer
 
 ## 🛠 Stack tecnico
 
-- **Swift** (single-file `armadillo_bar.swift`, ~300 righe)
+- **Swift** (multi-file: `armadillo_bar.swift`, `ArmadilloClippyWindow.swift`, `ClippyBubblePanel.swift`, `ArmadilloAskWindow.swift`)
 - **Cocoa** — NSStatusItem, NSMenu
 - **AVFoundation** — AVAudioPlayer
 - **ServiceManagement** — SMAppService per login item (macOS 13+)
