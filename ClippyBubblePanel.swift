@@ -40,9 +40,9 @@ final class ClippyBubblePanel: NSPanel {
 
     // Tail occupies ~11 % of height in both artwork files (measured).
     static let tailFraction: CGFloat = 0.11
-    // Extra upward nudge to compensate for artwork visual asymmetry.
+    // Extra nudge to compensate for artwork visual asymmetry.
     // Positive = push text up, negative = push down. Tweak if text looks off.
-    static let textNudge: CGFloat = 10
+    static let textNudge: CGFloat = -10
 
     init(text: String, anchor: NSWindow) {
         let size    = NSSize(width: Self.bubbleW, height: Self.bubbleH)
@@ -189,12 +189,42 @@ final class ClippyBubbleView: NSView {
         tf.translatesAutoresizingMaskIntoConstraints = false
         addSubview(tf)
 
+        // Pin text strictly inside the bubble body (non-tail) area.
+        // isFlipped=false: topAnchor = high-Y side, bottomAnchor = low-Y side.
+        // Body for .down → above tail:  y ∈ [tailH, height]
+        // Body for .up  → below tail:  y ∈ [0, height - tailH]
+        let bodyPad: CGFloat = 10   // breathing room inside body edges
+        let bodyTopConstraint: NSLayoutConstraint
+        let bodyBottomConstraint: NSLayoutConstraint
+
+        switch style {
+        case .down:
+            // body bottom = tailH above the view's bottom anchor
+            bodyTopConstraint    = tf.topAnchor.constraint(
+                greaterThanOrEqualTo: topAnchor, constant: -bodyPad)
+            bodyBottomConstraint = tf.bottomAnchor.constraint(
+                lessThanOrEqualTo: bottomAnchor, constant: tailH + bodyPad)
+        case .up:
+            // body top = tailH below the view's top anchor
+            bodyTopConstraint    = tf.topAnchor.constraint(
+                greaterThanOrEqualTo: topAnchor, constant: -(tailH + bodyPad))
+            bodyBottomConstraint = tf.bottomAnchor.constraint(
+                lessThanOrEqualTo: bottomAnchor, constant: bodyPad)
+        }
+
+        // Soft center-in-body as preferred position (lower priority than the bounds above).
+        let softCenter = tf.centerYAnchor.constraint(
+            equalTo: centerYAnchor,
+            constant: style.centerYOffset(tailH: tailH, nudge: nudge))
+        softCenter.priority = .defaultHigh
+
         NSLayoutConstraint.activate([
             tf.centerXAnchor.constraint(equalTo: centerXAnchor),
-            tf.centerYAnchor.constraint(equalTo: centerYAnchor,
-                                        constant: style.centerYOffset(tailH: tailH, nudge: nudge)),
-            tf.widthAnchor  .constraint(equalTo: widthAnchor,
-                                        constant: -(leftInset + rightInset)),
+            tf.widthAnchor.constraint(equalTo: widthAnchor,
+                                      constant: -(leftInset + rightInset)),
+            bodyTopConstraint,
+            bodyBottomConstraint,
+            softCenter,
         ])
     }
 
