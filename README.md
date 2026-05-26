@@ -79,7 +79,7 @@ Nome file = label nel menu.
 | `⌥⌘5`    | Soggetto consapevole |
 | `⌥⌘6`    | Vola basso |
 | `⌥⌘7`    | Ti raggiungo col coso |
-| `⌥⌘8`    | N'damose a pija 'n gelato |
+| `⌥⌘8`    | Annamo a pija er gelato |
 | `⌥⌘9`    | Zona d'ombra |
 
 Funzionano ovunque, anche senza aprire il menu. Ripremere lo stesso shortcut ferma la riproduzione.

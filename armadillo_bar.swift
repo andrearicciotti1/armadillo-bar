@@ -114,7 +114,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, AVAudioPlaye
         BuiltInClip(label: "Ti raggiungo col coso",
                     base: "Ti raggiungo col coso",
                     key: UInt32(kVK_ANSI_7), mods: UInt32(cmdKey | optionKey), display: "⌥⌘7"),
-        BuiltInClip(label: "N'damose a pija 'n gelato",
+        BuiltInClip(label: "Annamo a pija er gelato",
                     base: "Ndamose a pija ngelato",
                     key: UInt32(kVK_ANSI_8), mods: UInt32(cmdKey | optionKey), display: "⌥⌘8"),
         BuiltInClip(label: "Zona d'ombra",
