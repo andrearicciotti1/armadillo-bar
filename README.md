@@ -6,6 +6,8 @@
 > I clip audio usati a scopo dimostrativo sono stati scaricati da YouTube (contenuti pubblicamente accessibili caricati da terzi) e usati qui esclusivamente per scopo illustrativo, satirico e di omaggio alle opere. **Nessun ricavo, donazione, pubblicità o monetizzazione è associato a questo progetto.**  
 > Se sei il titolare dei diritti e desideri la rimozione dei contenuti, scrivi a **andrearicciotti1@gmail.com** o apri una [issue](../../issues): i file verranno rimossi tempestivamente, entro 24 ore, senza discussione.
 
+## ⬇️ [Download ArmadilloBar-1.0.dmg](https://github.com/andrearicciotti1/armadillo-bar/releases/latest/download/ArmadilloBar-1.0.dmg)
+
 ---
 
 Menu bar app macOS ispirata alle opere di **Zerocalcare** (*Strappare lungo i bordi*, *Questo mondo non mi renderà cattivo* e dintorni). Frasi iconiche romane a portata di shortcut globale, dalla menu bar del Mac.
